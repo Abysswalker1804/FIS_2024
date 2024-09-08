@@ -53,8 +53,15 @@ public class Practica1 extends Stage{
                 lblEdad.setText("Debe ser un número entre 18 y 30");
                 btnAgregar.setDisable(true);
             }
-            if(valorNuevo.isEmpty() || chbOpcion.getValue().toString().equals("Selecciona un género"))
+            if(chbOpcion.getValue().toString().equals("Selecciona un género"))
                 btnAgregar.setDisable(true);
+        });
+        chbOpcion.getSelectionModel().selectedIndexProperty().addListener((observable, valorAnt, valorNuevo) ->{
+            if(valorNuevo.toString().equals("Selecciona un género")){
+                btnAgregar.setDisable(true);
+            }else{
+                btnAgregar.setDisable(false);
+            }
         });
         btnAgregar.setOnAction(event ->{
             String opc=(String)chbOpcion.getValue();
